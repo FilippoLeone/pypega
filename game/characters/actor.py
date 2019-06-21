@@ -6,7 +6,9 @@ class Actor:
         self.x = x
         self.y = y
         self.direction = ''
-    
+        self.is_attacking = False
+        self.hp = c.actor_hp
+
     def __del__(self):
         pass
 
@@ -23,6 +25,34 @@ class Actor:
     def get_position(self):
         return self.x, self.y
     
+    def get_direction(self):
+        return self.direction
+
+    def is_attacking(self):
+        return self.is_attacking
+
+    def draw_hp_bar(self):
+        pyxel.text(17, 10, self.get_hp(), 8)
+        pyxel.blt(2, 10, 0, 48, 48, 16, 16, 0)
+        pyxel.blt(18, 10, 0, 48+16, 48, 16, 16, 0)
+        pyxel.blt(34, 10, 0, 48+32, 48, 16, 16, 0)
+        pyxel.blt(50, 10, 0, 48+48, 48, 16, 16, 0)
+
+    def get_hp(self):
+        return (f"{self.hp}")
+
+    def attack(self, direction):
+        if direction == 'right':
+            pyxel.blt(self.x+15, self.y, 0, 64, 32, 16, 16, 0)
+        else:
+            pyxel.blt(self.x-15, self.y, 0, 64, 32, -16, 16, 0)
+
+    def shield(self, direction):
+        if direction == 'right':
+            pyxel.blt(self.x+12, self.y, 0, 80, 32, 16, 16, 0)
+        else:
+            pyxel.blt(self.x-12, self.y, 0, 80, 32, -16, 16, 0)   
+
     def draw(self):
         if self.is_jumping() and self.direction == 'Left':
             pyxel.blt(self.x, self.y, 0, 0, 48, -16, -16, 0)
