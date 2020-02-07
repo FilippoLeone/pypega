@@ -1,4 +1,4 @@
 # pypega
 Pypega the game
 
-![Gameplay](https://thumbs.gfycat.com/ResponsibleSoggyDowitcher-mobile.mp4)
+![Gameplay](https://j.gifs.com/vl7jXn.gif)
